@@ -240,3 +240,57 @@ timestamp,client_id,ip,endpoint,status,user_agent,username,label
 2026-10-08 20:04:26,attacker_bot_10,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_10,credential_stuffing
 2026-10-08 20:04:28,attacker_bot_11,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_11,credential_stuffing
 2026-10-08 20:04:29,attacker_bot_12,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_12,credential_stuffing
+2026-10-08 22:16:35,client_127.0.0.1,127.0.0.1,/,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 22:17:03,client_127.0.0.1,127.0.0.1,/,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 22:17:26,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 22:17:32,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 22:17:45,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 22:17:46,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 22:18:37,stealth_bot_8,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
+2026-10-08 22:19:43,catalog_scraper_critical,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot-v2,demo_user,scraper
+2026-10-08 22:19:54,catalog_scraper_critical,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot-v2,demo_user,scraper
+2026-10-08 22:20:01,catalog_scraper_critical,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot-v2,demo_user,scraper
+2026-10-08 22:20:02,catalog_scraper_critical,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot-v2,demo_user,scraper
+2026-10-08 22:20:03,catalog_scraper_critical,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot-v2,demo_user,scraper
+2026-10-08 22:20:19,enumerator_bot_critical,127.0.0.1,/api/users/1009,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:24,enumerator_bot_critical,127.0.0.1,/api/users/1018,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:25,enumerator_bot_critical,127.0.0.1,/api/users/1012,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:26,enumerator_bot_critical,127.0.0.1,/api/users/1017,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:27,enumerator_bot_critical,127.0.0.1,/api/users/1013,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:28,enumerator_bot_critical,127.0.0.1,/api/users/1015,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:30,enumerator_bot_critical,127.0.0.1,/api/users/1014,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:20:29,enumerator_bot_critical,127.0.0.1,/api/users/1016,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 22:21:15,stealth_bot_7,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
+2026-10-08 22:21:16,stealth_bot_8,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
+2026-10-08 22:22:34,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,customer_1,normal
+2026-10-08 22:22:34,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,customer_1,normal
+2026-10-08 22:22:36,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,customer_1,normal
+2026-10-08 22:22:36,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,customer_1,normal
+2026-10-08 22:22:37,client_127.0.0.1,127.0.0.1,/api/checkout,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,customer_1,normal
+2026-10-08 22:22:37,client_127.0.0.1,127.0.0.1,/api/checkout,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,customer_1,normal
+2026-10-08 22:23:21,client_127.0.0.1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,admin,normal
+2026-10-08 22:23:21,client_127.0.0.1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,admin,normal
+2026-10-08 22:23:39,attacker_bot_1,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_1,credential_stuffing
+2026-10-08 22:23:39,attacker_bot_1,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_1,credential_stuffing
+2026-10-08 22:23:40,attacker_bot_2,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_2,credential_stuffing
+2026-10-08 22:23:40,attacker_bot_2,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_2,credential_stuffing
+2026-10-08 22:23:41,attacker_bot_3,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_3,credential_stuffing
+2026-10-08 22:23:41,attacker_bot_3,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_3,credential_stuffing
+2026-10-08 22:23:42,attacker_bot_4,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_4,credential_stuffing
+2026-10-08 22:23:42,attacker_bot_4,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_4,credential_stuffing
+2026-10-08 22:23:43,attacker_bot_5,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_5,credential_stuffing
+2026-10-08 22:23:43,attacker_bot_5,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_5,credential_stuffing
+2026-10-08 22:23:43,attacker_bot_6,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_6,credential_stuffing
+2026-10-08 22:23:43,attacker_bot_6,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_6,credential_stuffing
+2026-10-08 22:23:44,attacker_bot_7,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_7,credential_stuffing
+2026-10-08 22:23:44,attacker_bot_7,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_7,credential_stuffing
+2026-10-08 22:23:45,attacker_bot_8,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_8,credential_stuffing
+2026-10-08 22:23:45,attacker_bot_8,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_8,credential_stuffing
+2026-10-08 22:23:46,attacker_bot_9,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_9,credential_stuffing
+2026-10-08 22:23:46,attacker_bot_9,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_9,credential_stuffing
+2026-10-08 22:23:46,attacker_bot_10,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_10,credential_stuffing
+2026-10-08 22:23:46,attacker_bot_10,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_10,credential_stuffing
+2026-10-08 22:23:47,attacker_bot_11,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_11,credential_stuffing
+2026-10-08 22:23:47,attacker_bot_11,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_11,credential_stuffing
+2026-10-08 22:23:48,attacker_bot_12,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_12,credential_stuffing
+2026-10-08 22:23:48,attacker_bot_12,127.0.0.1,/api/login,401,Python-requests/Bot-v1,victim_user_12,credential_stuffing
