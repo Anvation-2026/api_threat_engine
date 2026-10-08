@@ -128,7 +128,7 @@ st.markdown("""
 # ==============================================================================
 @st.cache_resource
 def initialize_pipeline():
-    history_df = pd.read_csv("data/history_logs.csv")
+    history_df = pd.read_csv("data/history_logs.csv", on_bad_lines='skip')
     history_feats = extract_window_features(history_df, window_minutes=1)
     
     baseline = AdaptiveBaseline()
@@ -287,8 +287,8 @@ st.markdown('<p class="sub-title">Multi-Model Behavioral Analytics • Zero Fals
 
 baseline, markov, engine = initialize_pipeline()
 
-# Load live log data dynamically
-live_logs = pd.read_csv("data/live_logs.csv")
+# Load live log data dynamically while safely skipping bad CSV rows
+live_logs = pd.read_csv("data/live_logs.csv", on_bad_lines='skip')
 
 # Ensure robust datetime parsing for live ingested logs
 live_logs['timestamp'] = pd.to_datetime(live_logs['timestamp'], errors='coerce')
@@ -329,7 +329,7 @@ full_results.loc[high_threat_mask, 'final_risk_score'] = np.maximum(
 full_results.loc[high_threat_mask, 'risk_category'] = "High Risk"
 
 # ==============================================================================
-# AUTOMATED ONE-CLICK REPORT CONTROLS (SECRETS / ENV AUTO-LOADED)
+# AUTOMATED ONE-CLICK REPORT CONTROLS
 # ==============================================================================
 st.sidebar.divider()
 st.sidebar.markdown("### 📄 Automated AI Reports")
@@ -574,25 +574,57 @@ elif page == "🕹️ Live Replay Engine":
     else:
         filtered_logs = live_logs
 
-    features = extract_window_features(filtered_logs, window_minutes=1)
-    ruled_features = run_rule_detectors(features)
-    sim_results = engine.predict_risk(ruled_features, baseline, markov, filtered_logs)
+    if filtered_logs.empty:
+        st.warning("⚠️ No logs matched the selected scenario filter.")
+    else:
+        sim_features = extract_window_features(filtered_logs, window_minutes=1)
+        sim_ruled = run_rule_detectors(sim_features)
+        sim_results = engine.predict_risk(sim_ruled, baseline, markov, filtered_logs)
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Processed Stream Windows", len(sim_results))
-    c2.metric("Threats Flagged (>30)", len(sim_results[sim_results['final_risk_score'] > 30]))
-    c3.metric("Critical Alerts (>70)", len(sim_results[sim_results['final_risk_score'] > 70]))
+        if 'final_risk_score' not in sim_results.columns:
+            if 'risk_score' in sim_results.columns:
+                sim_results['final_risk_score'] = sim_results['risk_score']
+            else:
+                sim_results['final_risk_score'] = 0.0
 
-    st.markdown("#### 📺 Live Stream Scatter Visualization")
-    fig_sim = px.scatter(
-        sim_results, x="req_count", y="final_risk_score", color="risk_category",
-        hover_data=["client_id", "ip", "rule_evidence"],
-        color_discrete_map={"Low Risk": "#3fb950", "Medium Risk": "#d29922", "High Risk": "#f85149"},
-        template="plotly_dark", height=400
-    )
-    fig_sim.update_layout(paper_bgcolor="#161b22", plot_bgcolor="#161b22", margin=dict(l=15, r=15, t=15, b=15))
-    st.plotly_chart(fig_sim, width="stretch")
+        if 'risk_category' not in sim_results.columns:
+            sim_results['risk_category'] = sim_results['final_risk_score'].apply(
+                lambda s: "High Risk" if s > 70 else ("Medium Risk" if s >= 30 else "Low Risk")
+            )
+
+        sim_mask = (sim_results['failure_pct'] >= 0.70) & (sim_results['req_count'] >= 10)
+        sim_results.loc[sim_mask, 'final_risk_score'] = np.maximum(
+            sim_results.loc[sim_mask, 'final_risk_score'], 88.0
+        )
+        sim_results.loc[sim_mask, 'risk_category'] = "High Risk"
+
+        st.markdown("<br>", unsafe_allow_html=True)
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Processed Stream Windows", f"{len(sim_results):,}")
+        
+        threat_count = len(sim_results[sim_results['final_risk_score'] > 30])
+        c2.metric("Threats Flagged (>30)", threat_count)
+        
+        critical_count = len(sim_results[sim_results['final_risk_score'] > 70])
+        c3.metric("Critical Alerts (>70)", critical_count)
+
+        st.markdown("#### 📺 Live Stream Scatter Visualization")
+        fig_sim = px.scatter(
+            sim_results, 
+            x="req_count", 
+            y="final_risk_score", 
+            color="risk_category",
+            hover_data=["client_id", "ip", "rule_evidence"],
+            color_discrete_map={"Low Risk": "#3fb950", "Medium Risk": "#d29922", "High Risk": "#f85149"},
+            template="plotly_dark", 
+            height=400
+        )
+        fig_sim.update_layout(
+            paper_bgcolor="#161b22", 
+            plot_bgcolor="#161b22", 
+            margin=dict(l=15, r=15, t=15, b=15)
+        )
+        st.plotly_chart(fig_sim, width="stretch")
 
 # ==============================================================================
 # PAGE 5: BENCHMARK VS STATIC WAF
