@@ -149,3 +149,6 @@ timestamp,client_id,ip,endpoint,status,user_agent,username,label
 2026-10-08 13:20:50,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
 2026-10-08 13:20:52,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
 2026-10-08 13:20:51,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 18:39:20,client_127.0.0.1,127.0.0.1,/,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 18:40:03,client_127.0.0.1,127.0.0.1,/,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 18:40:24,stealth_bot_8,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
