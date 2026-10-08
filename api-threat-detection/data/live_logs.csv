@@ -1,0 +1,151 @@
+timestamp,client_id,ip,endpoint,status,user_agent,username,label
+2026-10-08 10:29:01,client_127.0.0.1,127.0.0.1,/,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 10:29:04,client_127.0.0.1,127.0.0.1,/favicon.ico,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 10:29:42,client_127.0.0.1,127.0.0.1,/,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:29:45,client_127.0.0.1,127.0.0.1,/favicon.ico,404,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:29:49,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:29:51,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:30:31,client_127.0.0.1,127.0.0.1,/api/checkout,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:30:49,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:31:03,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:32:02,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:34:12,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:34:26,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:34:37,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:34:38,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:34:53,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:35:06,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:35:08,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:35:12,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:35:10,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:35:43,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:36:10,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:36:12,stealth_bot_2,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:36:24,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:36:28,stealth_bot_2,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:36:31,stealth_bot_3,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:39:06,client_127.0.0.1,127.0.0.1,/api/checkout,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:39:09,client_127.0.0.1,127.0.0.1,/api/checkout,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:39:24,catalog_scraper_9,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot,demo_user,scraper
+2026-10-08 10:39:55,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:39:56,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:39:59,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:40:02,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:40:08,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:40:17,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:40:20,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:40:37,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:40:56,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:40:59,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:41:26,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:41:46,stealth_bot_3,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:41:44,enumerator_bot,127.0.0.1,/api/users/1007,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:41:52,enumerator_bot,127.0.0.1,/api/users/1007,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:48:11,client_127.0.0.1,127.0.0.1,/,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:53:19,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:53:22,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 10:53:46,stealth_bot_3,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 10:53:48,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:00:20,client_127.0.0.1,127.0.0.1,/,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:00:52,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:00:57,stealth_bot_1,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:00:58,stealth_bot_2,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:01:02,stealth_bot_3,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:01:00,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:01:26,client_127.0.0.1,127.0.0.1,/api/products,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:01:47,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:02:13,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:02:16,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:03:22,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:03:24,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:03:49,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:04:08,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:04:54,catalog_scraper_9,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot,demo_user,scraper
+2026-10-08 11:04:57,catalog_scraper_9,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot,demo_user,scraper
+2026-10-08 11:05:10,catalog_scraper_9,127.0.0.1,/api/products,200,HeadlessChrome/ScraperBot,demo_user,scraper
+2026-10-08 11:05:25,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:05:28,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:05:45,stealth_bot_2,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:05:43,client_127.0.0.1,127.0.0.1,/api/checkout,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:05:49,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:12:10,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:12:13,attacker_stuffer_1,127.0.0.1,/api/login,200,Python-requests/Bot-v1,demo_user,credential_stuffing
+2026-10-08 11:12:22,stealth_bot_3,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:12:19,stealth_bot_4,127.0.0.1,/api/login,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:23:24,client_127.0.0.1,127.0.0.1,/,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:30,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:32,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:32,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:33,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:41,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:44,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:23:57,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:00,attacker_stuffer_critical,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:04,stealth_bot_5,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:06,stealth_bot_8,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:32,stealth_bot_5,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:34,stealth_bot_6,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:36,stealth_bot_7,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:24:39,stealth_bot_8,127.0.0.1,/api/login,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:28:46,client_127.0.0.1,127.0.0.1,/,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:29:01,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:29:13,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:29:27,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:29:36,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:30:10,enumerator_bot_critical,127.0.0.1,/api/users/1006,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:12,enumerator_bot_critical,127.0.0.1,/api/users/1007,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:13,enumerator_bot_critical,127.0.0.1,/api/users/1011,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:14,enumerator_bot_critical,127.0.0.1,/api/users/1009,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:16,enumerator_bot_critical,127.0.0.1,/api/users/1010,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:18,enumerator_bot_critical,127.0.0.1,/api/users/1008,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:19,enumerator_bot_critical,127.0.0.1,/api/users/1012,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:23,enumerator_bot_critical,127.0.0.1,/api/users/1013,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:33,enumerator_bot_critical,127.0.0.1,/api/users/1018,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:34,enumerator_bot_critical,127.0.0.1,/api/users/1019,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:36,enumerator_bot_critical,127.0.0.1,/api/users/1020,404,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,enumeration
+2026-10-08 11:30:46,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:30:50,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:30:52,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:30:54,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:31:01,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:31:03,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:31:20,catalog_scraper_critical,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,scraper
+2026-10-08 11:31:40,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:31:44,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:31:48,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:31:51,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:31:54,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:31:55,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:32:54,client_127.0.0.1,127.0.0.1,/api/products,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,normal
+2026-10-08 11:34:58,stealth_bot_5,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,low_and_slow
+2026-10-08 11:34:59,stealth_bot_6,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,low_and_slow
+2026-10-08 11:35:02,stealth_bot_7,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,low_and_slow
+2026-10-08 11:35:05,stealth_bot_8,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,low_and_slow
+2026-10-08 11:36:57,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:37:07,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:37:09,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:37:19,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:37:23,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:37:25,attacker_stuffer_critical,127.0.0.1,/api/login,401,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.141.0 Chrome/150.0.7871.250 Electron/43.7.7 Safari/537.36",demo_user,credential_stuffing
+2026-10-08 11:39:18,client_127.0.0.1,127.0.0.1,/,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0,demo_user,normal
+2026-10-08 11:40:18,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 11:40:30,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 11:40:32,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 11:40:36,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:08:00,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:08:16,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:08:18,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:08:24,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:09:28,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:09:56,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:10:11,stealth_bot_5,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
+2026-10-08 13:10:15,stealth_bot_3,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
+2026-10-08 13:10:19,stealth_bot_4,127.0.0.1,/api/login,401,StealthBot/1.0,demo_user,low_and_slow
+2026-10-08 13:15:24,enumerator_bot_critical,127.0.0.1,/api/users/1016,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 13:15:29,enumerator_bot_critical,127.0.0.1,/api/users/1007,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 13:15:31,enumerator_bot_critical,127.0.0.1,/api/users/1005,404,Python-requests/EnumBot,demo_user,enumeration
+2026-10-08 13:20:45,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:20:49,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:20:50,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:20:52,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
+2026-10-08 13:20:51,attacker_stuffer_critical,127.0.0.1,/api/login,401,Python-requests/Bot-v1.0 (Credential Stuffer),demo_user,credential_stuffing
