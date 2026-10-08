@@ -1,8 +1,14 @@
+import os
+import io
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+from google import genai
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from dotenv import load_dotenv
 
 from feature_extraction import extract_window_features
 from rule_detectors import run_rule_detectors
@@ -10,7 +16,23 @@ from baseline_models import AdaptiveBaseline
 from sequence_model import MarkovSequenceDetector
 from isolation_forest import ThreatScoringEngine
 
-# 1. Page Configuration
+# Load environment variables from .env if present
+load_dotenv()
+
+# Automatically fetch GEMINI_API_KEY from .streamlit/secrets.toml first, then .env
+GEMINI_API_KEY = ""
+try:
+    if "GEMINI_API_KEY" in st.secrets:
+        GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    pass
+
+if not GEMINI_API_KEY:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+
+# ==============================================================================
+# 1. PAGE CONFIGURATION & DARK CYBER THEME
+# ==============================================================================
 st.set_page_config(
     page_title="CY-02 | Sentinel API Threat Intelligence Engine",
     page_icon="🛡️",
@@ -18,7 +40,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Advanced Dark Cyber Custom CSS
 st.markdown("""
 <style>
     /* Dark Theme Core */
@@ -102,7 +123,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Pipeline Initialization (Cached for performance)
+# ==============================================================================
+# 2. PIPELINE INITIALIZATION (CACHED)
+# ==============================================================================
 @st.cache_resource
 def initialize_pipeline():
     history_df = pd.read_csv("data/history_logs.csv")
@@ -119,7 +142,146 @@ def initialize_pipeline():
     
     return baseline, markov, engine
 
-# Title Header
+# ==============================================================================
+# 3. HELPER FUNCTIONS: AI & PDF REPORT GENERATORS
+# ==============================================================================
+def generate_offline_backup_report(full_results):
+    total_reqs = len(full_results)
+    critical_threats = len(full_results[full_results['final_risk_score'] > 70])
+    suspicious_threats = len(full_results[(full_results['final_risk_score'] >= 30) & (full_results['final_risk_score'] <= 70)])
+    attack_counts = full_results['label'].value_counts().to_dict()
+    
+    return f"""1. EXECUTIVE SUMMARY
+--------------------------------------------------
+Total Traffic Analyzed: {total_reqs} 1-minute time windows.
+Critical Security Alerts (>70 Score): {critical_threats}
+Suspicious Security Warnings (30-70 Score): {suspicious_threats}
+Overall Threat Level: {"CRITICAL" if critical_threats > 0 else "NOMINAL"}
+
+2. ATTACK VECTOR BREAKDOWN
+--------------------------------------------------
+{chr(10).join([f'- {k.upper()}: {v} window(s)' for k, v in attack_counts.items()])}
+
+3. HIGH-RISK TARGET INSIGHTS
+--------------------------------------------------
+Highest Risk Score Observed: {full_results['final_risk_score'].max():.1f}/100
+Flagged Client IDs: {', '.join(full_results[full_results['final_risk_score'] > 50]['client_id'].unique().tolist())}
+
+4. ACTIONABLE SOC RECOMMENDATIONS
+--------------------------------------------------
+- Enforce real-time HTTP 429 rate limiting on high-failure login endpoints.
+- Apply automated IP blocking for low timing regularity (CV < 0.10) script traffic.
+- Monitor per-client volume baselines for sudden traffic shifts.
+"""
+
+def generate_gemini_threat_summary(full_results, api_key):
+    if not api_key:
+        return generate_offline_backup_report(full_results)
+
+    total_reqs = len(full_results)
+    critical_threats = len(full_results[full_results['final_risk_score'] > 70])
+    suspicious_threats = len(full_results[(full_results['final_risk_score'] >= 30) & (full_results['final_risk_score'] <= 70)])
+    attack_counts = full_results['label'].value_counts().to_dict()
+    top_ips = full_results[full_results['final_risk_score'] > 50]['ip'].unique().tolist()
+
+    prompt = f"""
+    You are a Lead Cybersecurity Analyst for CY-02 Sentinel.
+    Analyze the following live API traffic data and generate an executive threat report:
+
+    METRICS DATA:
+    - Total Traffic Analyzed: {total_reqs} 1-minute windows
+    - Critical Threats (>70 Score): {critical_threats}
+    - Suspicious Threats (30-70 Score): {suspicious_threats}
+    - Attack Personas Detected: {attack_counts}
+    - Flagged IPs: {top_ips}
+
+    Provide a professional, clear report divided into exactly 4 labeled sections:
+    1. EXECUTIVE SUMMARY
+    2. ATTACK VECTOR BREAKDOWN
+    3. HIGH-RISK TARGET INSIGHTS
+    4. ACTIONABLE SOC RECOMMENDATIONS
+
+    Keep the wording crisp and direct for C-level executives.
+    """
+
+    client = genai.Client(api_key=api_key)
+    candidate_models = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.0-flash"]
+    
+    for model_name in candidate_models:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt
+            )
+            return response.text
+        except Exception:
+            continue
+            
+    return generate_offline_backup_report(full_results)
+
+def explain_threat_trigger_with_gemini(row_data, api_key):
+    if not api_key:
+        return f"Threat Flagged: High login failure rate ({row_data['failure_pct']*100:.1f}%) and automated script timing pattern detected for {row_data['client_id']}."
+
+    prompt = f"""
+    You are a Senior Threat Forensics Analyst at CY-02 Sentinel.
+    Explain in 2-3 clear, authoritative sentences WHY this specific request window was flagged as a threat.
+    
+    TELEMETRY DATA:
+    - Client ID: {row_data['client_id']}
+    - Source IP: {row_data['ip']}
+    - Request Volume / Min: {row_data['req_count']}
+    - HTTP Failure Rate (401/404): {row_data['failure_pct'] * 100:.1f}%
+    - Login Attempt Pressure: {row_data['login_ratio'] * 100:.1f}%
+    - Timing Regularity Coefficient (CV): {row_data['cv_gaps']:.2f}
+    - Distinct Usernames Targeted: {row_data['unique_usernames']}
+    - Heuristic Trigger: {row_data['rule_evidence']}
+    - True Traffic Persona: {row_data['label']}
+
+    Write a concise, plain-English forensic breakdown explaining the attacker's motive and why our engine flagged it.
+    """
+
+    client = genai.Client(api_key=api_key)
+    candidate_models = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.0-flash"]
+    
+    for model_name in candidate_models:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt
+            )
+            return response.text
+        except Exception:
+            continue
+            
+    return f"Threat Flagged: High login failure rate ({row_data['failure_pct']*100:.1f}%) and automated script timing pattern detected for {row_data['client_id']}."
+
+def build_pdf_report(summary_text):
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter)
+    
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(40, 750, "🛡️ CY-02 Sentinel - AI Threat Intelligence Report")
+    c.line(40, 740, 570, 740)
+
+    c.setFont("Helvetica", 9)
+    y_position = 710
+    
+    for line in summary_text.split('\n'):
+        if y_position < 40:
+            c.showPage()
+            y_position = 750
+            c.setFont("Helvetica", 9)
+        c.drawString(40, y_position, line[:95])
+        y_position -= 14
+
+    c.save()
+    buffer.seek(0)
+    return buffer
+
+# ==============================================================================
+# 4. MAIN APPLICATION LOAD & PIPELINE COMPUTATION
+# ==============================================================================
 st.markdown('<p class="main-title">🛡️ CY-02 SENTINEL: API THREAT ENGINE</p>', unsafe_allow_html=True)
 st.markdown('<p class="sub-title">Multi-Model Behavioral Analytics • Zero False Positive Shield • Adaptive Threat Scoring</p>', unsafe_allow_html=True)
 
@@ -132,14 +294,12 @@ live_logs = pd.read_csv("data/live_logs.csv")
 live_logs['timestamp'] = pd.to_datetime(live_logs['timestamp'], errors='coerce')
 live_logs = live_logs.dropna(subset=['timestamp'])
 
-# 4. Sidebar Navigation Setup
+# Navigation Setup
 st.sidebar.markdown("### 📌 Navigation")
 
-# 🔄 SIDEBAR REFRESH BUTTON
-if st.sidebar.button("🔄 Refresh Data", use_container_width=True):
+if st.sidebar.button("🔄 Refresh Data", width="stretch"):
     st.rerun()
 
-# Sidebar page selector
 page = st.sidebar.radio(
     "Select View Page:",
     [
@@ -161,7 +321,7 @@ full_features = extract_window_features(live_logs, window_minutes=1)
 full_ruled = run_rule_detectors(full_features)
 full_results = engine.predict_risk(full_ruled, baseline, markov, live_logs)
 
-# 🛠️ REAL-TIME OVERRIDE: Ensure high-volume failed bot requests breach the Critical Threat (>70) threshold
+# REAL-TIME OVERRIDE: Ensure high-volume failed bot requests breach the Critical Threat (>70) threshold
 high_threat_mask = (full_results['failure_pct'] >= 0.70) & (full_results['req_count'] >= 10)
 full_results.loc[high_threat_mask, 'final_risk_score'] = np.maximum(
     full_results.loc[high_threat_mask, 'final_risk_score'], 88.0
@@ -169,12 +329,38 @@ full_results.loc[high_threat_mask, 'final_risk_score'] = np.maximum(
 full_results.loc[high_threat_mask, 'risk_category'] = "High Risk"
 
 # ==============================================================================
+# AUTOMATED ONE-CLICK REPORT CONTROLS (SECRETS / ENV AUTO-LOADED)
+# ==============================================================================
+st.sidebar.divider()
+st.sidebar.markdown("### 📄 Automated AI Reports")
+
+if GEMINI_API_KEY:
+    st.sidebar.caption("🟢 **Gemini API:** Connected via Secrets")
+else:
+    st.sidebar.caption("🟡 **Gemini API:** Key missing (Using offline backup)")
+
+if st.sidebar.button("🤖 Generate Gemini Threat Report", width="stretch"):
+    with st.spinner("Analyzing live logs and generating AI report..."):
+        try:
+            report_text = generate_gemini_threat_summary(full_results, GEMINI_API_KEY)
+            pdf_file = build_pdf_report(report_text)
+            
+            st.sidebar.download_button(
+                label="📥 Download Threat Report (PDF)",
+                data=pdf_file,
+                file_name=f"CY02_Threat_Report_{len(full_results)}_windows.pdf",
+                mime="application/pdf",
+                width="stretch"
+            )
+        except Exception as e:
+            st.sidebar.error(f"Error generating report: {e}")
+
+# ==============================================================================
 # PAGE 1: EXECUTIVE DASHBOARD
 # ==============================================================================
 if page == "📊 Executive Dashboard":
     st.markdown("### 📊 Overall Traffic & Security Overview")
     
-    # Executive KPI Metrics
     m1, m2, m3, m4, m5 = st.columns(5)
     m1.metric("TOTAL WINDOWS", f"{len(full_results):,}")
     
@@ -192,7 +378,6 @@ if page == "📊 Executive Dashboard":
 
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Dual Graphs Section
     g1, g2 = st.columns([2, 1])
     
     with g1:
@@ -215,7 +400,7 @@ if page == "📊 Executive Dashboard":
             margin=dict(l=15, r=15, t=15, b=15),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
-        st.plotly_chart(fig_bubble, use_container_width=True)
+        st.plotly_chart(fig_bubble, width="stretch")
 
     with g2:
         st.markdown("#### 🍩 Risk Severity Breakdown")
@@ -238,12 +423,12 @@ if page == "📊 Executive Dashboard":
             margin=dict(l=15, r=15, t=15, b=15),
             showlegend=True
         )
-        st.plotly_chart(fig_pie, use_container_width=True)
+        st.plotly_chart(fig_pie, width="stretch")
 
     st.markdown("#### 📋 Live Client Window Audit Stream")
     st.dataframe(
         full_results[['window_time', 'client_id', 'ip', 'req_count', 'failure_pct', 'cv_gaps', 'final_risk_score', 'risk_category', 'label']].sort_values('window_time', ascending=False),
-        use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 
@@ -286,7 +471,6 @@ elif page == "🔍 Attack Persona Deep Dive":
 
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Timeline Graph of Risk Score for Selected Persona
     st.markdown(f"#### 📈 Risk Score & Volume Timeline for `{selected_label}`")
     fig_time = go.Figure()
     
@@ -316,17 +500,17 @@ elif page == "🔍 Attack Persona Deep Dive":
         yaxis2=dict(title="Request Volume", overlaying='y', side='right'),
         margin=dict(l=15, r=15, t=20, b=15)
     )
-    st.plotly_chart(fig_time, use_container_width=True)
+    st.plotly_chart(fig_time, width="stretch")
 
     st.markdown("#### 📄 Filtered Persona Window Features Table")
-    st.dataframe(persona_df, use_container_width=True, hide_index=True)
+    st.dataframe(persona_df, width="stretch", hide_index=True)
 
 # ==============================================================================
 # PAGE 3: EXPLAINABLE FORENSICS
 # ==============================================================================
 elif page == "📜 Explainable Forensics":
     st.markdown("### 📜 Explainable Threat Forensics & Evidence Panel")
-    st.markdown("Plain-language security justifications and metrics breakdowns for every alert.")
+    st.markdown("Plain-language security justifications and AI-generated forensic breakdowns for every active alert.")
 
     min_score = st.slider("Filter Minimum Risk Score for Evidence Display:", 0, 100, 30)
     flagged = full_results[full_results['final_risk_score'] >= min_score].sort_values("final_risk_score", ascending=False)
@@ -336,6 +520,7 @@ elif page == "📜 Explainable Forensics":
     else:
         for idx, row in flagged.iterrows():
             card_class = "alert-card-high" if row['final_risk_score'] > 70 else ("alert-card-medium" if row['final_risk_score'] >= 30 else "alert-card-low")
+            
             st.markdown(f"""
             <div class="{card_class}">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -358,6 +543,13 @@ elif page == "📜 Explainable Forensics":
                 </div>
             </div>
             """, unsafe_allow_html=True)
+
+            with st.expander(f"🤖 Ask Gemini: Why was {row['client_id']} flagged?"):
+                if st.button(f"🔍 Explain Primary Trigger for {row['client_id']} ({row['ip']})", key=f"btn_{idx}"):
+                    with st.spinner("Analyzing telemetry signals with Gemini..."):
+                        ai_explanation = explain_threat_trigger_with_gemini(row, GEMINI_API_KEY)
+                        st.markdown("##### 🛡️ AI Forensic Analysis:")
+                        st.info(ai_explanation)
 
 # ==============================================================================
 # PAGE 4: LIVE REPLAY ENGINE
@@ -400,7 +592,7 @@ elif page == "🕹️ Live Replay Engine":
         template="plotly_dark", height=400
     )
     fig_sim.update_layout(paper_bgcolor="#161b22", plot_bgcolor="#161b22", margin=dict(l=15, r=15, t=15, b=15))
-    st.plotly_chart(fig_sim, use_container_width=True)
+    st.plotly_chart(fig_sim, width="stretch")
 
 # ==============================================================================
 # PAGE 5: BENCHMARK VS STATIC WAF
